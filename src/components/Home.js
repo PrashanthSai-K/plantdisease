@@ -9,7 +9,7 @@ function Home() {
     return (
         <>
             <Navbar />
-            <div className=' sm:flex items-center justify-center h-5/6  flex flex-col-reverse pl-20 w-full' >
+            <div className=' sm:flex items-center justify-center h-5/6  flex flex-col-reverse sm:pl-20 w-full' >
                 <div className=' sm:pl-24 pl-6 h-1/2 w-full flex flex-col items-center justify-center sm:h-auto text-center pt-8'>
                     <h1 className='drop-shadow-2xl text-emerald-950 sm:text-6xl font-medium text-4xl '>
                         WELCOME !!!
