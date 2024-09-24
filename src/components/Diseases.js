@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './Navbar'
+import ReactPaginate from 'react-paginate';
 
 function Diseases() {
 
@@ -81,25 +82,91 @@ function Diseases() {
         },
     ]
 
+    const [currentPage, setCurrentPage] = useState(0);
+    const diseasesPerPage = 8;
+
+    // Calculate the number of pages
+    const pageCount = Math.ceil(vegetableDisease.length / diseasesPerPage);
+
+    // Get the current diseases based on the current page
+    const indexOfFirstDisease = currentPage * diseasesPerPage;
+    const currentDiseases = vegetableDisease.slice(indexOfFirstDisease, indexOfFirstDisease + diseasesPerPage);
+
+    // Handle page click
+    const handlePageClick = (data) => {
+        setCurrentPage(data.selected);
+    };
+
     return (
         <>
             <Navbar />
-            <h1 className='text-emerald-950 text-2xl font-semibold pl-20 pt-4' >DISEASES</h1>
-            <h1 className=' text-xl font-semibold pl-20 pt-4'  style={{color:"rgb(5, 19, 15)"}}>VEGETABLES</h1>
+            <h1 className='text-emerald-1000 text-2xl font-semibold pl-20 pt-4' >DISEASES</h1>
+            <h1 className=' text-xl text-emerald-1000 font-semibold pl-20 pt-4 '>VEGETABLES</h1>
 
-            <div className='px-1 py-2 flex gap-5 flex-wrap h-auto bg-emerald-50 w-full items-center justify-center pt-10'>
+            {/* <div className='px-1 py-2 flex gap-5 flex-wrap h-auto bg-emerald-50 w-full items-center justify-center pt-10'>
                 {vegetableDisease.map((vege) => {
                     return (
-                        <div className='w-64 h-80 bg-white rounded-2xl overflow-hidden p-3 border border-dashed border-emerald-950 shadow-[0_3px_10px_rgb(0,0,0,0.2)]'>
+                        <div className='w-64 h-80 bg-white rounded-2xl overflow-hidden p-3 border border-dashed border-emerald-1000 shadow-[0_3px_10px_rgb(0,0,0,0.2)]'>
                             <img className='w-full h-1/2 object-cover rounded-2xl' src={vege.image} alt="" />
                             <div>
-                                <h1 className='text-emerald-950 text-xl font-medium' title={vege.name}>{vege.name.length > 19 ? `${vege.name.slice(0, 18)}...` : vege.name}</h1>
+                                <h1 className='text-emerald-1000 text-xl font-medium' title={vege.name}>{vege.name.length > 19 ? `${vege.name.slice(0, 18)}...` : vege.name}</h1>
                                 <p className='text-xs p-1 text-justify'>{vege.cause.length > 230 ? `${vege.cause.slice(0, 230)}...` : vege.cause}</p>
                             </div>
                         </div>
                     )
                 })}
+            </div> */}
+            <div className='flex items-center justify-center'>
+                <div className='px-1 py-2 flex flex-col gap-5 flex-wrap h-auto bg-emerald-50 w-7/12 items-center justify-center pt-10'>
+                    <div className='flex gap-5 flex-wrap items-center justify-center'>
+                        {currentDiseases.map((vege) => (
+                            <div key={vege.name} className='w-64 h-80 bg-white rounded-2xl overflow-hidden p-3 border border-dashed border-emerald-1000 shadow-[0_3px_10px_rgb(0,0,0,0.2)]'>
+                                <img className='w-full h-1/2 object-cover rounded-2xl' src={vege.image} alt={vege.name} />
+                                <div>
+                                    <h1 className='text-emerald-1000 text-xl font-medium' title={vege.name}>
+                                        {vege.name.length > 19 ? `${vege.name.slice(0, 18)}...` : vege.name}
+                                    </h1>
+                                    <p className='text-xs p-1 text-justify'>
+                                        {vege.cause.length > 230 ? `${vege.cause.slice(0, 230)}...` : vege.cause}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* React Paginate */}
+                    <div className='pt-5'>
+                        {/* <ReactPaginate
+                        previousLabel={'Previous'}
+                        nextLabel={'Next'}
+                        breakLabel={'...'}
+                        breakClassName={'break-me'}
+                        pageCount={pageCount}
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={5}
+                        onPageChange={handlePageClick}
+                        containerClassName={'pagination'}
+                        activeClassName={'active'}
+                        pageClassName={'px-3 py-1 bg-emerald-500 text-white rounded mx-1'}
+                        previousClassName={'px-3 py-1 bg-emerald-500 text-white rounded mx-1'}
+                        nextClassName={'px-3 py-1 bg-emerald-500 text-white rounded mx-1'}
+                        activeLinkClassName={'p-1 rounded-full bg-emerald-1000'}
+                        disabledClassName={'opacity-50 cursor-not-allowed'}
+                    /> */}
+
+                        <ReactPaginate
+                            breakLabel="..."
+                            nextLabel="next >"
+                            onPageChange={handlePageClick}
+                            pageRangeDisplayed={5}
+                            pageCount={pageCount}
+                            containerClassName='flex gap-5 '
+                            previousLabel="< previous"
+                            renderOnZeroPageCount={null}
+                        />                </div>
+                </div>
             </div>
+
         </>
     )
 }

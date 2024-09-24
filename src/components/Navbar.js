@@ -10,21 +10,21 @@ function Navbar() {
                 <div className='' onClick={() => navigate('/')}>
                     <img className='cursor-pointer drop-shadow-2xl' src="/images/Logo.png" alt="Logo" />
                 </div>
-                <ul className=' hidden sm:flex gap-6 font-medium text-xl text-emerald-900 transition-all duration-200'>
+                <ul className=' hidden sm:flex gap-6 font-medium text-xl text-emerald-1000 transition-all duration-200'>
                     <li
-                        className=' cursor-pointer hover:drop-shadow-2xl hover:text-emerald-600'
+                        className=' cursor-pointer hover:drop-shadow-2xl hover:text-emerald-950'
                         onClick={() => navigate('/')}
                     >
                         Home
                     </li>
                     <li
-                        className=' cursor-pointer hover:drop-shadow-2xl hover:text-emerald-600'
+                        className=' cursor-pointer hover:drop-shadow-2xl hover:text-emerald-950'
                         onClick={() => navigate('/diseases')}
                     >
                         Diseases
                     </li>
                     <li
-                        className=' cursor-pointer hover:drop-shadow-2xl hover:text-emerald-600'
+                        className=' cursor-pointer hover:drop-shadow-2xl hover:text-emerald-950'
                     >
                         About Us
                     </li>
