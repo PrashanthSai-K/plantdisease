@@ -4,6 +4,7 @@ import Home from './components/Home';
 import Diseases from './components/Diseases';
 import FruitDetail from './components/FruitDetail';
 import VegetableDetail from './components/VegetableDetail';
+import About from './components/About';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
           <Route path='/diseases' element={<Diseases /> }  />
           <Route path='/diseases/fruits/:id' element={<FruitDetail /> }  />
           <Route path='/diseases/vegetable/:id' element={<VegetableDetail /> }  />
+          <Route path='/aboutus' element={<About /> }  />
+
         </Routes>
       </BrowserRouter>
     </div>

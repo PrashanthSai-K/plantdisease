@@ -25,6 +25,7 @@ function Navbar() {
                     </li>
                     <li
                         className=' cursor-pointer hover:drop-shadow-2xl hover:text-emerald-950'
+                        onClick={() => navigate('/aboutus')}
                     >
                         About Us
                     </li>
