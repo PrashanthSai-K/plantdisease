@@ -6,7 +6,9 @@ import Fruits from './Fruits';
 
 function Diseases() {
 
-    const [page, setPage] = useState("vegetables");
+    const selectedDisease = localStorage.getItem("selectedDisease");
+    const disease = selectedDisease ? selectedDisease : "vegetables"
+    const [page, setPage] = useState(disease);
     const [dropdown, setDropdown] = useState(false);
 
     const handleDropdown = () => {
@@ -14,8 +16,11 @@ function Diseases() {
     }
 
     const handleDropdownClick = (data) => {
+        console.log(data);
+        
+        localStorage.setItem('selectedDisease', data);
         setPage(data);
-        setDropdown(!dropdown);
+        setDropdown(false); // Close dropdown after selection
     }
 
     return (
