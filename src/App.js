@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import Diseases from './components/Diseases';
+import SpecificDisease from './components/SpecificDisease';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home /> }  />
           <Route path='/diseases' element={<Diseases /> }  />
+          <Route path='/diseases/:name' element={<SpecificDisease /> }  />
         </Routes>
       </BrowserRouter>
     </div>
