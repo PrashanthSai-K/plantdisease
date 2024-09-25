@@ -163,7 +163,8 @@ function Diseases() {
                             containerClassName='flex gap-5 '
                             previousLabel="< previous"
                             renderOnZeroPageCount={null}
-                        />                </div>
+                        />
+                    </div>
                 </div>
             </div>
 
